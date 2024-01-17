@@ -1,8 +1,8 @@
 <?php
-    require_once 'classes/db.php';
+    require_once 'db.php';
 
     class ProductModel extends DB {
-        protected $table = "products";
+        protected $table = "Products";
 
 		public function getAllProducts() {
             $query = 'SELECT * FROM ' . $this->table . ';';

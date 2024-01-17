@@ -1,7 +1,10 @@
 <?php
 
 require_once 'model/product-model.php';
-require_once 'views/product-api.php';
+require_once 'view/product-api.php';
+
+$pdo = connect($host, $database, $user, $password);
+
 
 $productModel = new ProductModel($pdo);
 $productApi = new ProductApi();
@@ -11,6 +14,7 @@ if (isset($_GET['action'])) {
     $chosenAction = filter_var($_GET['action'], FILTER_SANITIZE_SPECIAL_CHARS);
 
     if ($chosenAction == 'products') {
+        echo 'hej';
         $products = $productModel->getAllProducts();
         $productApi->outputProducts($products);
     }         

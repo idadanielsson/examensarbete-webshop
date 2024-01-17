@@ -2,9 +2,9 @@
 
 require_once 'config.php';
 
-function connect($host, $dbname, $password, $charset)
+function connect($host, $database, $user, $password)
 {
-	$dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
+	$dsn = "mysql:host=$host;dbname=$database;charset=UTF8";
 
 	try {
 		$options = [
@@ -13,10 +13,10 @@ function connect($host, $dbname, $password, $charset)
             PDO::ATTR_EMULATE_PREPARES => false
         ];
 
-		return new PDO($dsn, $dbname, $password, $options);
+		return new PDO($dsn, $user, $password, $options);
 	} catch (PDOException $e) {
 		die($e->getMessage());
 	}
 }
 
-return connect($host, $dbname, $password, $charset);
+return connect($host, $database, $user, $password);
